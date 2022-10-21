@@ -1,26 +1,27 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning Github Actions.
 on: [push]
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: '14'
-#       - run: npm install -g bats
-#       - run: bats -v
 env:
   DAY_OF_WEEK: Saturday
-jobs: 
-  greeting_job:
-    runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
-    steps:
-      - name: "Say Hello Mona it's Monday"
-        if: ${{ env.DAY_OF_WEEK == 'Saturday' }}
-        run: echo "$Greeting $First_Name. Today is ${{ env.DAY_OF_WEEK }}"
+  jobs:
+    job:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-node@v3
+            with:
+              node-version: '14'
+          - run: npm install -g bats
+          - run: bats -v
+    job: 
+      greeting_job:
+        runs-on: ubuntu-latest
         env:
-          First_Name: Mona
+          Greeting: Hello
+        steps:
+          - name: "Say Hello Mona it's Monday"
+            if: ${{ env.DAY_OF_WEEK == 'Saturday' }}
+            run: echo "$Greeting $First_Name. Today is ${{ env.DAY_OF_WEEK }}"
+            env:
+              First_Name: Mona
