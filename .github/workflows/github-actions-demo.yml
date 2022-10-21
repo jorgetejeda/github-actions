@@ -35,7 +35,8 @@ jobs:
       - name: "Say Hello Mona it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Saturday' }}
         run: echo "$Greeting $First_Name. Today is ${{ env.DAY_OF_WEEK }}"
-        if: ${{ env.DAY_OF_WEEK == 'Sunday' }}
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK ."
+        # You only define "if" statement once
+        # if: ${{ env.DAY_OF_WEEK == 'Sunday' }}
+        # run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK ."
         env:
           First_Name: Mona
